@@ -1,0 +1,14 @@
+.blog-ctn{
+    display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 50px;
+}
+.blog-ctn img{
+    height: 50vh;
+    width: 30vw;
+  
+}
+p{
+    color: rgb(114, 116, 117);
+}

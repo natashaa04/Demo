@@ -1,0 +1,158 @@
+.navbar {
+  top: 0;
+  z-index: 1000;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  margin: 0 auto;
+  height:20px
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  width: 200px;
+  height: auto;
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.logo img:hover {
+  opacity: 0.5;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #a855f7;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon svg {
+  font-size: 26px;
+  color: #111;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #111;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 2px 5px;
+}
+
+.mobile-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu-icon svg {
+  font-size: 26px;
+  color: #111;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+  border-top: 1px solid #eee;
+}
+
+.mobile-menu a {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.toggle-btn {
+  color: #a855f7;
+  background-color: white;
+  border: none;
+}
+
+/* ---------- TABLETS & BELOW ---------- */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 14px 30px;
+  }
+
+  .logo img {
+    width: 38px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .nav-right {
+    gap: 25px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .nav-right {
+    gap: 16px;
+  }
+
+  .logo img {
+    width: 72px;
+  }
+
+  .cart-icon svg,
+  .mobile-menu-icon svg {
+    font-size: 22px;
+  }
+
+  .cart-count {
+    font-size: 8px;
+    padding: 1px 4px;
+  }
+}
+
+

@@ -1,0 +1,17 @@
+.elementWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2px;
+    padding:20px;
+    flex-wrap:wrap;
+}
+.elementItem{
+   text-align: center;
+   padding: 10px;
+}
+.icons svg{
+    color:rgb(153, 67, 153);
+    height: 70px;
+    width:70px;
+}
