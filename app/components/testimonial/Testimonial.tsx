@@ -1,13 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./testimonial.css";
-import { testimonials } from "@/app/data/testimonial";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { testimonialsT } from "@/app/types/product";
+import { useApi } from "@/app/customHooks/useApi";
 
 const NextArrow = (props: any) => {
   const { onClick } = props;
@@ -51,6 +53,20 @@ const settings = {
 };
 
 const Testimonials = () => {
+
+const [testimonials,setTestimonials]= useState<testimonialsT[]>([])
+      const {getTestimonialData}= useApi();
+    
+    
+      useEffect(() => {
+        const fetchData = async () => {
+          const data = await getTestimonialData(); 
+          setTestimonials(data);                
+        };
+    
+        fetchData();
+      }, [getTestimonialData]); 
+
   return (
     <section className="testimonials">
       <h2>Our Best Customers</h2>

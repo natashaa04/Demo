@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Minus, Plus, X } from "lucide-react";
+
 import "./Cart.css";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { CartItem } from "@/app/types/product";
 import { removeFromCart, updateQuantity } from "@/app/redux/cartSlice";
 import { setStoredData } from "@/app/lib/utility";
+
 const Cart = () => {
   const {cartItem} = useAppSelector((state)=>state.cart);
   const dispatch = useAppDispatch()
@@ -35,10 +36,9 @@ console.log(cartItem);
   };
 
   return (
+    
     <section className="cart-page">
-      <div className="cart-header">
-        <h1>Cart</h1>
-      </div>
+      
 
       <div className="cart-table">
         <div className="cart-row cart-header-row">

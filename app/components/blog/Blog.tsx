@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 import "./Blog.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { blogData } from "@/app/data/Blog";
+import { blogT } from "@/app/types/product";
+import { useApi } from "@/app/customHooks/useApi";
+
 
 const Blog = () => {
   const settings = {
@@ -27,6 +29,20 @@ const Blog = () => {
       }
     ]
   };
+
+  const [blogData,setBlogData]= useState<blogT[]>([])
+  const {getBlogData}= useApi();
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getBlogData(); 
+      setBlogData(data);                
+    };
+
+    fetchData();
+  }, [getBlogData]); 
+
 
   return (
     <div className="blog-section">

@@ -1,10 +1,8 @@
-"use client"
 import React from 'react'
-import Product from '../product/page'
+import Address from '../components/address/address'
 
 export default function page() {
   return (
-    <Product/>
-
+    <Address/>
   )
 }

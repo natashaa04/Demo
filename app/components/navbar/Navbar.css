@@ -43,6 +43,7 @@
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
@@ -53,6 +54,7 @@
   position: relative;
   display: flex;
   align-items: center;
+   cursor: pointer;
 }
 
 .cart-icon svg {
@@ -95,6 +97,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #333;
+  cursor: pointer;
 }
 
 .toggle-btn {

@@ -1,10 +1,8 @@
-"use client"
 import React from 'react'
-import Product from '../product/page'
+import Login from '../components/login/Login'
 
 export default function page() {
   return (
-    <Product/>
-
+    <Login/>
   )
 }

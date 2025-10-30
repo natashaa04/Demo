@@ -11,7 +11,7 @@ import { useTheme } from "@/app/providers/ThemeProvider";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useRouter } from 'next/navigation';
-import { setStoredData } from '@/app/lib/utility';
+import { getStoredData, setStoredData } from '@/app/lib/utility';
 
 export default function Navbar() {
      const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,15 +19,17 @@ export default function Navbar() {
        const router= useRouter()
      
        const {cartItem} = useAppSelector((state)=>state.cart)
-       console.log(cartItem)
-     
+      
+     console.log("get stored data",getStoredData())
        const [count,setCount]= useState(0)
-     
+   
        useEffect(()=>{
          
           const totalQuantity= cartItem.reduce((acc,item)=>{
-           acc+= item.quantity;
-           return acc;
+           acc++;
+
+
+           return acc;  
           },0);
           setCount(totalQuantity)
            
@@ -49,13 +51,13 @@ export default function Navbar() {
     
             <div className="nav-right">
               <nav className="nav-links">
-                <a onClick={()=>router.push('/home')} className="active">
+                <a onClick={()=>router.push('/')} className="active">
                   HOMEPAGE
                 </a>
                 <a onClick={()=>router.push('/shop')}>SHOP</a>
                 <a onClick={()=>router.push('/blog')}>BLOG</a>
-                <a >CONTACT</a>
-                <a>MY ACCOUNT</a>
+                <a onClick={()=>router.push("/contact")}>CONTACT</a>
+                <a onClick={()=>router.push("/account")}>MY ACCOUNT</a>
               </nav>
     
               <button className="cart-icon" onClick={()=>router.push("/cart")}>
@@ -77,11 +79,11 @@ export default function Navbar() {
     
           {isMenuOpen && (
             <div className="mobile-menu">
-              <a href="#">HOMEPAGE</a>
-              <a href="#">SHOP</a>
-              <a href="#">BLOG</a>
-              <a href="#">CONTACT</a>
-              <a href="#">MY ACCOUNT</a>
+              <a onClick={()=>router.push('/')}>HOMEPAGE</a>
+              <a onClick={()=>router.push('/shop')}>SHOP</a>
+              <a onClick={()=>router.push('/blog')}>BLOG</a>
+              <a onClick={()=>router.push('/contact')}>CONTACT</a>
+              <a onClick={()=>router.push('/account')}>MY ACCOUNT</a>
             </div>
           )}</div>
   )

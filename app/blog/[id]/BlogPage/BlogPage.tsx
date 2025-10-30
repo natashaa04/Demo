@@ -1,35 +1,42 @@
 "use client";
-import { blogData } from "@/app/data/Blog";
-import { addToCart } from "@/app/redux/cartSlice";
-import { useAppDispatch } from "@/app/redux/hooks";
-import { blogT } from "@/app/types/product";
+
 import React, { useEffect, useState } from "react";
-import "./BlogPage.css"
+import { useApi } from "@/app/customHooks/useApi";
+import { blogT } from "@/app/types/product";
+import "./BlogPage.css";
 import PageBar from "@/app/components/pageBar/PageBar";
 
-interface blogP {
+interface BlogPageProps {
   id: number;
 }
-export default function BlogPage({ id }: blogP) {
-  const data = blogData.find((item) => item.id === id);
 
-  const [blog, setBlog] = useState<blogT>();
-  const dataa = blogData.find((item) => item.id === id);
-  console.log("data is", data, id);
+export default function BlogPage({ id }: BlogPageProps) {
+  const [blogData, setBlogData] = useState<blogT[]>([]);
+  const [blog, setBlog] = useState<blogT | null>(null);
+  const { getBlogData } = useApi();
 
   useEffect(() => {
-    setBlog(dataa);
-  }, [id]);
+    const fetchData = async () => {
+      const data = await getBlogData();
+      setBlogData(data);
+    };
+    fetchData();
+  }, [getBlogData]);
+
+  useEffect(() => {
+    if (blogData.length > 0) {
+      const found = blogData.find((item) => item.id === id) || null;
+      setBlog(found);
+    }
+  }, [id, blogData]);
+
+  if (!blog) return <p>Loading...</p>;
+
   return (
-    <div>
-        <PageBar/>
-      <div className="blog-ctn">
-        <div >
-        <img src={blog?.image}></img>
-        </div>
-        <h3>{blog?.title}</h3>
-        <p>{blog?.desc}</p>
-      </div>
+    <div className="blog-ctn">
+      <img src={blog.image} alt={blog.title} />
+      <h3>{blog.title}</h3>
+      <p>{blog.desc}</p>
     </div>
   );
 }

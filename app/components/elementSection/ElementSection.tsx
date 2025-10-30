@@ -1,8 +1,7 @@
-"use client"
-import React from 'react'
+
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';

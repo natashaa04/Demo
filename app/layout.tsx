@@ -10,6 +10,9 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Topbar from "./components/topbar/Topbar";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import PageBar from "./components/pageBar/PageBar";
+import ScrollTop from "./components/scrollTop/ScrollTop";
 
 
 export default function RootLayout({
@@ -22,8 +25,12 @@ export default function RootLayout({
       <body >
         <Provider store={store}>
         <ThemeProvider>
+            <Topbar/>
               <Header />
+            <PageBar/>
         {children}
+        <ScrollTop/>
+         <Footer/>
         </ThemeProvider>
         </Provider>
       </body>

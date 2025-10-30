@@ -1,0 +1,23 @@
+.barWrapper {
+  background-color: #dda7f8 !important;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+justify-content: space-between;
+  align-items: start;
+  gap: 8px;
+  margin-top: 50px;
+}
+
+.name {
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+}
+
+.MuiBreadcrumbs-root a {
+  color: white;
+}
+
+.MuiBreadcrumbs-root a:hover {
+  text-decoration: underline;
+}

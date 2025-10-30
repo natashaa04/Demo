@@ -2,7 +2,7 @@
 
 import { CartItem } from "../types/product";
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css";      
 
 export const getStoredData=()=>{
     if (typeof window !== "undefined") {
@@ -14,6 +14,13 @@ export const getStoredData=()=>{
 export const setStoredData=(data:CartItem[])=>{
     localStorage.setItem("cartItems",JSON.stringify(data))
 }
+
+export const getApi=(dataName:string)=>{
+    return fetch(`/data/${dataName}.json`)
+
+}
+  
+
 
 
   
