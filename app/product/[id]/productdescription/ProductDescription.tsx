@@ -1,45 +1,49 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./productDescription.css";
-import { CartItem, OilProduct } from "@/app/types/product";
-import { useAppDispatch } from "@/app/redux/hooks";
-import { addToCart } from "@/app/redux/cartSlice";
+import { OilProduct } from "@/app/types/product";
 import { useApi } from "@/app/customHooks/useApi";
 
 interface ProductDescriptionProps {
-  id: number;
+  id: string;
 }
 
 export default function ProductDescription({ id }: ProductDescriptionProps) {
-
-    const [oils, setOils] = useState<OilProduct[]>([]);
-    const { getOilData } = useApi();
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        const data = await getOilData();
-        setOils(data);
-      };
-  
-      fetchData();
-    }, [getOilData]);
-  
-  const product: OilProduct | undefined = oils.find((p: OilProduct) => p.id == id);
+  const [oils, setOils] = useState<OilProduct[]>([]);
+  const { getOilData, addToCart } = useApi();
   const [quantity, setQuantity] = useState(1);
-  const dispatch= useAppDispatch()
-  console.log("product is",product)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getOilData();
+      setOils(data);
+    };
+    fetchData();
+  }, [getOilData]);
+
+  const product: OilProduct | undefined = oils.find((p) => p.id == id);
+
   if (!product) {
-    return <p style={{ padding: "40px", textAlign: "center" }}>Product not found.</p>;
+    return (
+      <p style={{ padding: "40px", textAlign: "center" }}>
+        Product not found.
+      </p>
+    );
   }
 
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => quantity > 1 && setQuantity(quantity - 1);
-  
-  const handleAdd=()=>{
-    const item:CartItem= {...product,quantity}
-    dispatch(addToCart(item))
 
-  }
+  const handleAdd = async () => {
+    try {
+        const productId= product.id
+      await addToCart(productId,quantity)
+      alert("Product added to cart!");
+    } catch (error) {
+      console.error("Failed to add product to cart:", error);
+      alert("Error adding to cart");
+    }
+  };
 
   return (
     <div className="product-container">
@@ -59,7 +63,9 @@ export default function ProductDescription({ id }: ProductDescriptionProps) {
             <button onClick={handleIncrease}>+</button>
           </div>
 
-          <button className="add-to-cart"  onClick={handleAdd}>Add to Cart</button>
+          <button className="add-to-cart" onClick={handleAdd}>
+            Add to Cart
+          </button>
           <button className="wishlist">♡ Wishlist</button>
         </div>
       </div>

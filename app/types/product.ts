@@ -1,5 +1,5 @@
 export interface OilProduct {
-  id: number;
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -10,7 +10,7 @@ export interface CartItem extends OilProduct {
   quantity: number;
 }
 export interface testimonialsT {
-  id: number;
+  id: string;
   name: string;
   title: string;
   image: string;
@@ -19,7 +19,7 @@ export interface testimonialsT {
 }
 
 export interface blogT{
-    id:number;
+    id:string;
     image:string,
     title:string,
     desc:string,
